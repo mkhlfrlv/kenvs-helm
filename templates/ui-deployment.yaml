@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: vue
+  template:
+    metadata:
+      labels:
+        app: vue
+    spec:
+      containers:
+      - name: vue
+        image: "{{ .Values.vue.image }}:{{ .Values.vue.tag }}"
+        ports:
+        - containerPort: {{ .Values.vue.port }}

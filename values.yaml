@@ -1,0 +1,46 @@
+replicaCount: 1
+
+imagePullPolicy: IfNotPresent
+
+# Apps
+nginx:
+  image: 10.107.157.156:80/kenvs-nginx
+  tag: latest
+  port: 80
+
+flask:
+  image: 10.107.157.156:80/kenvs-api
+  tag: latest
+  port: 5000
+
+vue:
+  image: 10.107.157.156:80/kenvs-ui
+  tag: latest
+  port: 8080
+
+# Service Account
+
+serviceAccount:
+  name: default
+  namespace: default
+
+clusterRole:
+  name: pod-listing-role
+
+clusterRoleBinding:
+  name: pod-listing-binding
+
+# Ingress
+ingress:
+  enabled: true
+  name: kenvs
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  host: "kenvs.local"
+  path: "/"
+
+service:
+  name: nginx
+  type: ClusterIP
+  port: 80
+  targetPort: 80
