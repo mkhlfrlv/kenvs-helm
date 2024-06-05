@@ -4,17 +4,17 @@ imagePullPolicy: IfNotPresent
 
 # Apps
 nginx:
-  image: 10.107.157.156:80/kenvs-nginx
+  image: mkhlfrlv/kenvs-nginx
   tag: latest
   port: 80
 
 flask:
-  image: 10.107.157.156:80/kenvs-api
+  image: mkhlfrlv/kenvs-api
   tag: latest
   port: 5000
 
 vue:
-  image: 10.107.157.156:80/kenvs-ui
+  image: mkhlfrlv/kenvs-ui
   tag: latest
   port: 8080
 
